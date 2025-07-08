@@ -1,0 +1,129 @@
+# CP Data Analysis v2 - Configuración del Sistema
+# ===============================================
+
+# Configuración de análisis
+analisis:
+  # Período de análisis en días
+  dias_historicos: 7
+  
+  # Áreas a analizar (dejar vacío para todas las áreas)
+  areas_analisis: []
+  
+  # Configuración de métricas
+  metricas:
+    # Factor de multiplicación para inestabilidad
+    factor_inestabilidad: 1000
+    
+    # Factor de multiplicación para tasa de cambio
+    factor_tasa_cambio: 10000
+    
+    # Número mínimo de registros para considerar un equipo válido
+    min_registros_equipo: 10
+    
+    # Umbral mínimo para valores de llenado (0-100)
+    umbral_llenado_minimo: 0.1
+
+# Configuración de base de datos
+base_datos:
+  # Tamaño del lote para procesamiento
+  tamano_lote: 1000
+  
+  # Timeout de conexión en segundos
+  timeout_conexion: 30
+  
+  # Número máximo de reintentos
+  max_reintentos: 3
+
+# Configuración de logging
+logging:
+  # Nivel de log (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  nivel: "INFO"
+  
+  # Archivo de log principal
+  archivo_principal: "logs/cp_data_analysis_v2.log"
+  
+  # Archivo de log de errores
+  archivo_errores: "logs/errores_v2.log"
+  
+  # Formato de fecha en logs
+  formato_fecha: "%Y-%m-%d %H:%M:%S"
+  
+  # Rotación de logs (MB)
+  tamano_maximo_log: 10
+
+# Configuración de ranking
+ranking:
+  # Tipos de ranking a generar
+  tipos:
+    - "llenado"
+    - "inestabilidad"
+    - "tasa_cambio"
+    - "combinado"
+  
+  # Configuración de ranking combinado
+  combinado:
+    # Pesos para cada métrica (deben sumar 1.0)
+    peso_llenado: 0.4
+    peso_inestabilidad: 0.3
+    peso_tasa_cambio: 0.3
+    
+    # Normalización de valores
+    normalizar: true
+
+# Configuración de rendimiento
+rendimiento:
+  # Usar procesamiento paralelo
+  procesamiento_paralelo: false
+  
+  # Número de workers para procesamiento paralelo
+  num_workers: 4
+  
+  # Tamaño de chunk para procesamiento
+  tamano_chunk: 5000
+
+# Configuración de validación
+validacion:
+  # Validar datos de entrada
+  validar_entrada: true
+  
+  # Validar resultados antes de guardar
+  validar_salida: true
+  
+  # Umbral de confianza para valores atípicos
+  umbral_atipicos: 3.0
+
+# Configuración de reportes
+reportes:
+  # Generar reporte de resumen
+  generar_resumen: true
+  
+  # Generar reporte detallado
+  generar_detallado: false
+  
+  # Formato de salida (csv, json, excel)
+  formato_salida: "csv"
+  
+  # Directorio de salida
+  directorio_salida: "reportes"
+
+# Configuración de monitoreo
+monitoreo:
+  # Habilitar métricas de rendimiento
+  habilitar_metricas: true
+  
+  # Intervalo de monitoreo en segundos
+  intervalo_monitoreo: 60
+  
+  # Guardar métricas de rendimiento
+  guardar_metricas: false
+
+# Configuración de seguridad
+seguridad:
+  # Encriptar logs sensibles
+  encriptar_logs: false
+  
+  # Máscara de datos sensibles
+  enmascarar_datos: true
+  
+  # Nivel de auditoría
+  nivel_auditoria: "INFO" 

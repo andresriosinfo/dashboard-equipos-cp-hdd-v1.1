@@ -1,0 +1,89 @@
+dias_analisis:
+  descripcion: "N\xFAmero de d\xEDas hacia atr\xE1s para realizar los an\xE1lisis\
+    \ de datos"
+  fecha_modificacion: '2025-03-21T13:33:16.357000'
+  id_parametro: dias_analisis
+  nombre_parametro: "D\xEDas de An\xE1lisis"
+  tipo_dato: int
+  valor_parametro: '7'
+dias_retencion_logs:
+  descripcion: "N\xFAmero de d\xEDas para mantener los registros de log antes de eliminarlos"
+  fecha_modificacion: '2025-03-21T13:33:19.977000'
+  id_parametro: dias_retencion_logs
+  nombre_parametro: "D\xEDas de Retenci\xF3n de Logs"
+  tipo_dato: int
+  valor_parametro: '30'
+frecuencia_ejecucion:
+  descripcion: "Frecuencia en horas para la ejecuci\xF3n programada"
+  fecha_modificacion: '2025-03-21T13:33:18.217000'
+  id_parametro: frecuencia_ejecucion
+  nombre_parametro: "Frecuencia de Ejecuci\xF3n"
+  tipo_dato: int
+  valor_parametro: '24'
+hora_ejecucion:
+  descripcion: "Hora del d\xEDa (formato HH:MM) para ejecutar el an\xE1lisis programado"
+  fecha_modificacion: '2025-03-21T13:33:18.927000'
+  id_parametro: hora_ejecucion
+  nombre_parametro: "Hora de Ejecuci\xF3n"
+  tipo_dato: string
+  valor_parametro: 02:00
+max_hilos:
+  descripcion: "N\xFAmero m\xE1ximo de hilos para procesamiento paralelo"
+  fecha_modificacion: '2025-03-21T13:33:21.110000'
+  id_parametro: max_hilos
+  nombre_parametro: "M\xE1ximo de Hilos"
+  tipo_dato: int
+  valor_parametro: '4'
+max_reintentos:
+  descripcion: "N\xFAmero m\xE1ximo de reintentos para operaciones de base de datos\
+    \ fallidas"
+  fecha_modificacion: '2025-03-21T13:33:22.113000'
+  id_parametro: max_reintentos
+  nombre_parametro: "M\xE1ximo de Reintentos"
+  tipo_dato: int
+  valor_parametro: '3'
+nivel_log:
+  descripcion: "Nivel de detalle para la generaci\xF3n de logs (DEBUG, INFO, WARNING,\
+    \ ERROR, CRITICAL)"
+  fecha_modificacion: '2025-03-21T13:33:19.477000'
+  id_parametro: nivel_log
+  nombre_parametro: Nivel de Logging
+  tipo_dato: string
+  valor_parametro: INFO
+parametros_analisis:
+  descripcion: "Configuraci\xF3n de qu\xE9 an\xE1lisis ejecutar (en formato JSON)"
+  fecha_modificacion: '2025-03-21T13:33:22.607000'
+  id_parametro: parametros_analisis
+  nombre_parametro: "Par\xE1metros de An\xE1lisis"
+  tipo_dato: json
+  valor_parametro: '{"max": true, "min": true, "inestabilidad": true, "tasa_cambio":
+    true}'
+tamano_lote:
+  descripcion: "N\xFAmero de registros a procesar en cada lote durante el an\xE1lisis\
+    \ por lotes"
+  fecha_modificacion: '2025-03-21T13:33:20.593000'
+  id_parametro: tamano_lote
+  nombre_parametro: "Tama\xF1o de Lote"
+  tipo_dato: int
+  valor_parametro: '1000'
+timeout_db:
+  descripcion: Timeout en segundos para las operaciones de base de datos
+  fecha_modificacion: '2025-03-21T13:33:21.613000'
+  id_parametro: timeout_db
+  nombre_parametro: Timeout de Base de Datos
+  tipo_dato: int
+  valor_parametro: '30'
+umbral_maximo:
+  descripcion: "Valor m\xE1ximo aceptable para filtrar datos extremos"
+  fecha_modificacion: '2025-03-21T13:33:17.003000'
+  id_parametro: umbral_maximo
+  nombre_parametro: "Umbral M\xE1ximo"
+  tipo_dato: float
+  valor_parametro: '1000.0'
+umbral_minimo:
+  descripcion: "Valor m\xEDnimo aceptable para filtrar datos extremos"
+  fecha_modificacion: '2025-03-21T13:33:17.550000'
+  id_parametro: umbral_minimo
+  nombre_parametro: "Umbral M\xEDnimo"
+  tipo_dato: float
+  valor_parametro: '0.0'

@@ -1,0 +1,138 @@
+2025-07-04 12:29:02,317 - ranking_hdd_real - INFO - ================================================================================
+2025-07-04 12:29:02,317 - ranking_hdd_real - INFO - INICIANDO ANÁLISIS DE RANKING HDD CON DATOS REALES
+2025-07-04 12:29:02,318 - ranking_hdd_real - INFO - ================================================================================
+2025-07-04 12:29:02,318 - ranking_hdd_real - INFO - Cargando datos reales de HDD desde nv_hdd_history...
+2025-07-04 12:29:02,318 - hdd_data_analysis - ERROR - Failed to initialize database logging: No module named 'config'
+2025-07-04 12:29:02,319 - hdd_data_analysis - INFO - Falling back to file-only logging
+2025-07-04 12:29:02,319 - hdd_data_analysis - ERROR - Failed to initialize database: No module named 'config'
+2025-07-04 12:29:02,319 - hdd_data_analysis - ERROR - Failed to initialize database configuration: No module named 'config'
+2025-07-04 12:29:02,320 - hdd_data_analysis - INFO - Falling back to file-based configuration
+2025-07-04 12:29:02,320 - hdd_data_analysis - INFO - Configuration file not found, creating default file
+2025-07-04 12:29:02,321 - hdd_data_analysis - INFO - Created default configuration file: C:\Users\AndrésRios\OneDrive - InfoDesign Colombia (NIT 901276985)\Documents\OTMS\desarrollo\CP_Data_Analysis\hdd_data_analysis_v2\src\hdd_config_params.yaml
+2025-07-04 12:29:02,322 - hdd_data_analysis - ERROR - Error al obtener datos HDD de SQL Server: No module named 'config'
+2025-07-04 12:29:02,323 - hdd_data_analysis - ERROR - Traceback (most recent call last):
+  File "C:\Users\AndrésRios\OneDrive - InfoDesign Colombia (NIT 901276985)\Documents\OTMS\desarrollo\CP_Data_Analysis\hdd_data_analysis_v2\src\hdd_upload_data_deploy.py", line 39, in upload_data_sql
+    from config import DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
+ModuleNotFoundError: No module named 'config'
+
+2025-07-04 12:29:02,323 - ranking_hdd_real - ERROR - No se pudieron cargar datos de HDD
+2025-07-04 12:29:02,325 - ranking_hdd_real - ERROR - No se pudieron cargar datos. Terminando ejecución.
+2025-07-04 12:30:07,191 - ranking_hdd_real - INFO - ================================================================================
+2025-07-04 12:30:07,191 - ranking_hdd_real - INFO - INICIANDO ANÁLISIS DE RANKING HDD CON DATOS REALES
+2025-07-04 12:30:07,191 - ranking_hdd_real - INFO - ================================================================================
+2025-07-04 12:30:07,191 - ranking_hdd_real - INFO - Cargando datos reales de HDD desde nv_hdd_history...
+2025-07-04 12:30:09,180 - hdd_data_analysis - INFO - Database connection established successfully for HDD logging
+2025-07-04 12:30:09,277 - hdd_data_analysis - INFO - HDD logging tables created or verified
+2025-07-04 12:30:09,606 - hdd_data_analysis - INFO - Database connection established successfully for HDD operations
+2025-07-04 12:30:09,660 - hdd_data_analysis - INFO - HDD metadata table created or verified
+2025-07-04 12:30:09,771 - hdd_data_analysis - INFO - HDD results tables created or verified
+2025-07-04 12:30:10,032 - hdd_data_analysis - INFO - Database connection established successfully for HDD configuration
+2025-07-04 12:30:10,078 - hdd_data_analysis - INFO - HDD configuration table created or verified
+2025-07-04 12:30:10,119 - hdd_data_analysis - INFO - Loaded 16 configuration parameters from database
+2025-07-04 12:30:10,119 - hdd_data_analysis - INFO - Conectando a la base de datos cmpc_20240925_093000 en 10.147.17.185:1433 para datos HDD
+2025-07-04 12:30:10,321 - hdd_data_analysis - INFO - Conexión a la base de datos establecida con éxito para HDD
+2025-07-04 12:30:10,321 - hdd_data_analysis - INFO - Ejecutando consulta SQL para HDD: SELECT * FROM dbo.nv_hdd_history
+2025-07-04 12:30:11,336 - hdd_data_analysis - INFO - Query executed successfully: 36348 rows returned
+2025-07-04 12:30:11,373 - hdd_data_analysis - INFO - Consulta SQL completada en 1.05s
+2025-07-04 12:30:11,373 - hdd_data_analysis - INFO - Datos HDD obtenidos: 36348 filas, 5 columnas
+2025-07-04 12:30:11,741 - ranking_hdd_real - INFO - Datos HDD cargados exitosamente: 36348 registros
+2025-07-04 12:30:11,741 - ranking_hdd_real - INFO - Columnas disponibles: ['codigo', 'equipo', 'fecha', 'unidad', 'uso']
+2025-07-04 12:30:11,746 - ranking_hdd_real - INFO - Rango de fechas: 2023-11-22 a 2024-09-25
+2025-07-04 12:30:11,746 - ranking_hdd_real - INFO - Unidades únicas: 13
+2025-07-04 12:30:11,746 - ranking_hdd_real - INFO - Equipos únicos: 102
+2025-07-04 12:30:11,749 - ranking_hdd_real - INFO - Generando rankings de HDD...
+2025-07-04 12:30:11,750 - hdd_data_analysis - INFO - Generando rankings completos para unidades HDD...
+2025-07-04 12:30:11,750 - hdd_data_analysis - INFO - Generando ranking de uso para parejas equipo-unidad HDD...
+2025-07-04 12:30:11,767 - hdd_data_analysis - INFO - Ranking de uso generado: 432 parejas equipo-unidad
+2025-07-04 12:30:11,768 - hdd_data_analysis - INFO - Generando ranking de inestabilidad para parejas equipo-unidad HDD...
+2025-07-04 12:30:11,780 - hdd_data_analysis - INFO - Ranking de inestabilidad generado: 432 parejas equipo-unidad
+2025-07-04 12:30:11,780 - hdd_data_analysis - INFO - Generando ranking de tasa de cambio para parejas equipo-unidad HDD...
+2025-07-04 12:30:12,461 - hdd_data_analysis - INFO - Ranking de tasa de cambio generado: 432 parejas equipo-unidad
+2025-07-04 12:30:12,461 - hdd_data_analysis - INFO - Generando ranking combinado para parejas equipo-unidad HDD...
+2025-07-04 12:30:12,461 - hdd_data_analysis - INFO - Generando ranking de uso para parejas equipo-unidad HDD...
+2025-07-04 12:30:12,477 - hdd_data_analysis - INFO - Ranking de uso generado: 432 parejas equipo-unidad
+2025-07-04 12:30:12,477 - hdd_data_analysis - INFO - Generando ranking de inestabilidad para parejas equipo-unidad HDD...
+2025-07-04 12:30:12,497 - hdd_data_analysis - INFO - Ranking de inestabilidad generado: 432 parejas equipo-unidad
+2025-07-04 12:30:12,498 - hdd_data_analysis - INFO - Generando ranking de tasa de cambio para parejas equipo-unidad HDD...
+2025-07-04 12:30:13,422 - hdd_data_analysis - INFO - Ranking de tasa de cambio generado: 432 parejas equipo-unidad
+2025-07-04 12:30:13,423 - hdd_data_analysis - ERROR - Error generando ranking combinado: ufunc 'add' did not contain a loop with signature matching types (dtype('int64'), dtype('<U1')) -> None
+2025-07-04 12:30:13,424 - hdd_data_analysis - INFO - Rankings completos generados: 3 tipos de ranking
+2025-07-04 12:30:13,424 - ranking_hdd_real - INFO - Resumen de rankings generados:
+2025-07-04 12:30:13,425 - ranking_hdd_real - INFO -   total_tipos_ranking: 3
+2025-07-04 12:30:13,425 - ranking_hdd_real - INFO -   tipos_ranking: ['uso', 'inestabilidad', 'tasa_cambio']
+2025-07-04 12:30:13,425 - ranking_hdd_real - INFO -   fecha_generacion: 2025-07-04 12:30:13
+2025-07-04 12:30:13,425 - ranking_hdd_real - INFO -   uso_total_unidades: 432
+2025-07-04 12:30:13,426 - ranking_hdd_real - INFO -   uso_mejor_unidad: G:
+2025-07-04 12:30:13,426 - ranking_hdd_real - INFO -   uso_mejor_valor: 1.0
+2025-07-04 12:30:13,426 - ranking_hdd_real - INFO -   uso_peor_unidad: E:
+2025-07-04 12:30:13,426 - ranking_hdd_real - INFO -   uso_peor_valor: 0.0
+2025-07-04 12:30:13,426 - ranking_hdd_real - INFO -   inestabilidad_total_unidades: 432
+2025-07-04 12:30:13,427 - ranking_hdd_real - INFO -   inestabilidad_mejor_unidad: G:
+2025-07-04 12:30:13,427 - ranking_hdd_real - INFO -   inestabilidad_mejor_valor: 0.0
+2025-07-04 12:30:13,427 - ranking_hdd_real - INFO -   inestabilidad_peor_unidad: D:
+2025-07-04 12:30:13,427 - ranking_hdd_real - INFO -   inestabilidad_peor_valor: 58.858156362769684
+2025-07-04 12:30:13,428 - ranking_hdd_real - INFO -   tasa_cambio_total_unidades: 432
+2025-07-04 12:30:13,428 - ranking_hdd_real - INFO -   tasa_cambio_mejor_unidad: G:
+2025-07-04 12:30:13,428 - ranking_hdd_real - INFO -   tasa_cambio_mejor_valor: 0.0
+2025-07-04 12:30:13,428 - ranking_hdd_real - INFO -   tasa_cambio_peor_unidad: D:
+2025-07-04 12:30:13,428 - ranking_hdd_real - INFO -   tasa_cambio_peor_valor: 618.0917208528516
+2025-07-04 12:30:13,463 - hdd_data_analysis - INFO - Datos anteriores eliminados de nv_hdd_analisis_datos_v2
+2025-07-04 12:30:13,756 - hdd_data_analysis - ERROR - Error guardando rankings: (pyodbc.ProgrammingError) ('42S22', "[42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid column name 'equipo'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid column name 'equipo'. (207); [42S22] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[SQL: INSERT INTO nv_hdd_analisis_datos_v2 (fecha_analisis, equipo, unidad, tipo_ranking, posicion, valor_metrico, total_equipos, fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?, ?, ?), ... 6607 characters truncated ... , ?, ?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: (datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 13, 'G:', 'uso', 1, 1.0, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 463992), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 15, 'G:', 'uso', 2, 1.0, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 463992), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 15, 'E:', 'uso', 3, 1.0, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 463992), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 32, 'E:', 'uso', 4, 1.0, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 463992), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 30, 'E:', 'uso', 5, 1.0, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 463992), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 31, 'E:', 'uso', 6, 1.0, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 463992), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 14 ... 1996 parameters truncated ... 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 479617), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 1634, 'E:', 'uso', 257, 0.24018985714337962, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 479617), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 1617, 'Z:', 'uso', 258, 0.235825568962884, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 479617), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 168, 'avg', 'uso', 259, 0.2236058216981495, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 479617), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 64, 'avg', 'uso', 260, 0.22288280148268214, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 479617), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 1611, 'Z:', 'uso', 261, 0.21287326256300587, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 479617), datetime.datetime(2025, 7, 4, 12, 30, 11, 766622), 1634, 'H:', 'uso', 262, 0.209917331761618, 432, datetime.datetime(2025, 7, 4, 12, 30, 13, 479617))]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-07-04 12:30:13,757 - ranking_hdd_real - ERROR - Error guardando rankings en la base de datos
+2025-07-04 12:30:13,757 - ranking_hdd_real - INFO - 
+================================================================================
+2025-07-04 12:30:13,758 - ranking_hdd_real - INFO - RESULTADOS DE RANKINGS HDD
+2025-07-04 12:30:13,758 - ranking_hdd_real - INFO - ================================================================================
+2025-07-04 12:30:13,758 - ranking_hdd_real - INFO - 
+USO:
+2025-07-04 12:30:13,758 - ranking_hdd_real - INFO - --------------------------------------------------
+2025-07-04 12:30:13,759 - ranking_hdd_real - INFO -    1. 13              - G:              - Valor:   1.0000
+2025-07-04 12:30:13,760 - ranking_hdd_real - INFO -    2. 15              - G:              - Valor:   1.0000
+2025-07-04 12:30:13,760 - ranking_hdd_real - INFO -    3. 15              - E:              - Valor:   1.0000
+2025-07-04 12:30:13,760 - ranking_hdd_real - INFO -    4. 32              - E:              - Valor:   1.0000
+2025-07-04 12:30:13,760 - ranking_hdd_real - INFO -    5. 30              - E:              - Valor:   1.0000
+2025-07-04 12:30:13,760 - ranking_hdd_real - INFO -   ...
+2025-07-04 12:30:13,761 - ranking_hdd_real - INFO -   428. 33              - E:              - Valor:   0.0000
+2025-07-04 12:30:13,761 - ranking_hdd_real - INFO -   429. 1609            - E:              - Valor:   0.0000
+2025-07-04 12:30:13,761 - ranking_hdd_real - INFO -   430. 1610            - E:              - Valor:   0.0000
+2025-07-04 12:30:13,762 - ranking_hdd_real - INFO -   431. 14              - E:              - Valor:   0.0000
+2025-07-04 12:30:13,762 - ranking_hdd_real - INFO -   432. 6               - E:              - Valor:   0.0000
+2025-07-04 12:30:13,762 - ranking_hdd_real - INFO - 
+INESTABILIDAD:
+2025-07-04 12:30:13,763 - ranking_hdd_real - INFO - --------------------------------------------------
+2025-07-04 12:30:13,763 - ranking_hdd_real - INFO -    1. 37              - G:              - Valor:   0.0000
+2025-07-04 12:30:13,763 - ranking_hdd_real - INFO -    2. 183             - E:              - Valor:   0.0000
+2025-07-04 12:30:13,764 - ranking_hdd_real - INFO -    3. 11              - E:              - Valor:   0.0000
+2025-07-04 12:30:13,764 - ranking_hdd_real - INFO -    4. 38              - E:              - Valor:   0.0000
+2025-07-04 12:30:13,764 - ranking_hdd_real - INFO -    5. 38              - F:              - Valor:   0.0000
+2025-07-04 12:30:13,764 - ranking_hdd_real - INFO -   ...
+2025-07-04 12:30:13,764 - ranking_hdd_real - INFO -   428. 1622            - Z:              - Valor:   8.5407
+2025-07-04 12:30:13,766 - ranking_hdd_real - INFO -   429. 1621            - Z:              - Valor:   8.5525
+2025-07-04 12:30:13,766 - ranking_hdd_real - INFO -   430. 124             - C:              - Valor:  28.0582
+2025-07-04 12:30:13,766 - ranking_hdd_real - INFO -   431. 62              - C:              - Valor:  57.2313
+2025-07-04 12:30:13,767 - ranking_hdd_real - INFO -   432. 124             - D:              - Valor:  58.8582
+2025-07-04 12:30:13,767 - ranking_hdd_real - INFO - 
+TASA_CAMBIO:
+2025-07-04 12:30:13,767 - ranking_hdd_real - INFO - --------------------------------------------------
+2025-07-04 12:30:13,768 - ranking_hdd_real - INFO -    1. 37              - G:              - Valor:   0.0000
+2025-07-04 12:30:13,768 - ranking_hdd_real - INFO -    2. 1614            - Z:              - Valor:   0.0000
+2025-07-04 12:30:13,768 - ranking_hdd_real - INFO -    3. 139             - A:              - Valor:   0.0000
+2025-07-04 12:30:13,769 - ranking_hdd_real - INFO -    4. 186             - G:              - Valor:   0.0000
+2025-07-04 12:30:13,769 - ranking_hdd_real - INFO -    5. 185             - G:              - Valor:   0.0000
+2025-07-04 12:30:13,769 - ranking_hdd_real - INFO -   ...
+2025-07-04 12:30:13,771 - ranking_hdd_real - INFO -   428. 1615            - Z:              - Valor:  90.3316
+2025-07-04 12:30:13,771 - ranking_hdd_real - INFO -   429. 1613            - Z:              - Valor:  98.9245
+2025-07-04 12:30:13,771 - ranking_hdd_real - INFO -   430. 124             - C:              - Valor: 302.4301
+2025-07-04 12:30:13,771 - ranking_hdd_real - INFO -   431. 62              - C:              - Valor: 612.6712
+2025-07-04 12:30:13,772 - ranking_hdd_real - INFO -   432. 124             - D:              - Valor: 618.0917
+2025-07-04 12:30:13,772 - ranking_hdd_real - INFO - 
+================================================================================
+2025-07-04 12:30:13,772 - ranking_hdd_real - INFO - Verificando datos guardados en la base de datos...
+2025-07-04 12:30:13,801 - hdd_data_analysis - INFO - Rankings obtenidos: 0 registros
+2025-07-04 12:30:13,802 - ranking_hdd_real - WARNING - No se encontraron rankings guardados en la base de datos
+2025-07-04 12:30:13,802 - ranking_hdd_real - INFO - ================================================================================
+2025-07-04 12:30:13,802 - ranking_hdd_real - INFO - ANÁLISIS DE RANKING HDD COMPLETADO EXITOSAMENTE
+2025-07-04 12:30:13,803 - ranking_hdd_real - INFO - ================================================================================

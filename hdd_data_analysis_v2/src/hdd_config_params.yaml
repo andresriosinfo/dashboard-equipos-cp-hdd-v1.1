@@ -1,0 +1,17 @@
+columna_agrupacion: unidad
+dias_analisis: '7'
+dias_retencion_logs: '30'
+frecuencia_ejecucion: '24'
+hora_ejecucion: 02:00
+max_hilos: '4'
+max_reintentos: '3'
+nivel_log: INFO
+parametros_analisis: '{"max": true, "min": true, "inestabilidad": true, "tasa_cambio":
+  true}'
+query_datos: SELECT * FROM dbo.nv_hdd_history
+tabla_promedios: hdd_an_resultados_promedios
+tabla_resultados: hdd_an_resultados
+tamano_lote: '1000'
+timeout_db: '30'
+umbral_maximo: '100.0'
+umbral_minimo: '0.0'

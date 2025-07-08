@@ -1,0 +1,170 @@
+# Configuración específica para HDD Data Analysis
+# Este archivo contiene los parámetros de configuración para el análisis de datos HDD
+
+# Parámetros de base de datos
+DB_HOST: '10.147.17.185'
+DB_PORT: '1433'
+DB_NAME: 'cmpc_20240925_093000'
+DB_USER: 'otms'
+DB_PASSWORD: 'Password1'
+
+# Parámetros de análisis
+dias_analisis:
+  descripcion: "Número de días hacia atrás para realizar los análisis de datos HDD"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: dias_analisis
+  nombre_parametro: "Días de Análisis HDD"
+  tipo_dato: int
+  valor_parametro: '7'
+
+# Umbrales para filtrado de datos HDD
+umbral_maximo:
+  descripcion: "Valor máximo aceptable para filtrar datos extremos de uso HDD"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: umbral_maximo
+  nombre_parametro: "Umbral Máximo HDD"
+  tipo_dato: float
+  valor_parametro: '100.0'
+
+umbral_minimo:
+  descripcion: "Valor mínimo aceptable para filtrar datos extremos de uso HDD"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: umbral_minimo
+  nombre_parametro: "Umbral Mínimo HDD"
+  tipo_dato: float
+  valor_parametro: '0.0'
+
+# Configuración de ejecución
+frecuencia_ejecucion:
+  descripcion: "Frecuencia en horas para la ejecución programada"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: frecuencia_ejecucion
+  nombre_parametro: "Frecuencia de Ejecución"
+  tipo_dato: int
+  valor_parametro: '24'
+
+hora_ejecucion:
+  descripcion: "Hora del día (formato HH:MM) para ejecutar el análisis programado"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: hora_ejecucion
+  nombre_parametro: "Hora de Ejecución"
+  tipo_dato: string
+  valor_parametro: '02:00'
+
+# Configuración de logging
+nivel_log:
+  descripcion: "Nivel de detalle para la generación de logs (DEBUG, INFO, WARNING, ERROR, CRITICAL)"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: nivel_log
+  nombre_parametro: "Nivel de Logging"
+  tipo_dato: string
+  valor_parametro: 'INFO'
+
+dias_retencion_logs:
+  descripcion: "Número de días para mantener los registros de log antes de eliminarlos"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: dias_retencion_logs
+  nombre_parametro: "Días de Retención de Logs"
+  tipo_dato: int
+  valor_parametro: '30'
+
+# Configuración de procesamiento
+tamano_lote:
+  descripcion: "Número de registros a procesar en cada lote durante el análisis por lotes"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: tamano_lote
+  nombre_parametro: "Tamaño de Lote"
+  tipo_dato: int
+  valor_parametro: '1000'
+
+max_hilos:
+  descripcion: "Número máximo de hilos para procesamiento paralelo"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: max_hilos
+  nombre_parametro: "Máximo de Hilos"
+  tipo_dato: int
+  valor_parametro: '4'
+
+# Configuración de base de datos
+timeout_db:
+  descripcion: "Timeout en segundos para las operaciones de base de datos"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: timeout_db
+  nombre_parametro: "Timeout de Base de Datos"
+  tipo_dato: int
+  valor_parametro: '30'
+
+max_reintentos:
+  descripcion: "Número máximo de reintentos para operaciones de base de datos fallidas"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: max_reintentos
+  nombre_parametro: "Máximo de Reintentos"
+  tipo_dato: int
+  valor_parametro: '3'
+
+# Parámetros de análisis específicos para HDD
+parametros_analisis:
+  descripcion: "Configuración de qué análisis ejecutar (en formato JSON)"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: parametros_analisis
+  nombre_parametro: "Parámetros de Análisis HDD"
+  tipo_dato: json
+  valor_parametro: '{"max": true, "min": true, "inestabilidad": true, "tasa_cambio": true}'
+
+# Configuración específica de consultas y tablas HDD
+query_datos:
+  descripcion: "Consulta SQL para obtener datos de HDD"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: query_datos
+  nombre_parametro: "Query de Datos HDD"
+  tipo_dato: string
+  valor_parametro: "SELECT * FROM dbo.nv_hdd_history"
+
+tabla_resultados:
+  descripcion: "Tabla para guardar resultados de análisis HDD"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: tabla_resultados
+  nombre_parametro: "Tabla de Resultados HDD"
+  tipo_dato: string
+  valor_parametro: "hdd_an_resultados"
+
+tabla_promedios:
+  descripcion: "Tabla para guardar promedios de análisis HDD"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: tabla_promedios
+  nombre_parametro: "Tabla de Promedios HDD"
+  tipo_dato: string
+  valor_parametro: "hdd_an_resultados_promedios"
+
+columna_agrupacion:
+  descripcion: "Columna para agrupar datos de HDD (unidad)"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: columna_agrupacion
+  nombre_parametro: "Columna de Agrupación"
+  tipo_dato: string
+  valor_parametro: "unidad"
+
+# Configuración adicional
+usar_batch_query:
+  descripcion: "Usar procesamiento por lotes para consultas grandes"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: usar_batch_query
+  nombre_parametro: "Usar Batch Query"
+  tipo_dato: bool
+  valor_parametro: 'true'
+
+tamano_lote_escritura:
+  descripcion: "Tamaño de lote para escritura en base de datos"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: tamano_lote_escritura
+  nombre_parametro: "Tamaño de Lote Escritura"
+  tipo_dato: int
+  valor_parametro: '1000'
+
+auto_limpiar_logs:
+  descripcion: "Limpiar logs antiguos automáticamente"
+  fecha_modificacion: '2025-07-01T14:52:51'
+  id_parametro: auto_limpiar_logs
+  nombre_parametro: "Auto Limpiar Logs"
+  tipo_dato: bool
+  valor_parametro: 'true' 

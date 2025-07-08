@@ -1,0 +1,218 @@
+# HDD Data Analysis v2 - Configuración Principal
+# Versión: 2.0
+# Fecha: Julio 2025
+
+# Configuración de Base de Datos
+database:
+  server: "localhost"
+  database: "OTMS"
+  username: "sa"
+  password: "your_password_here"
+  driver: "ODBC Driver 17 for SQL Server"
+  timeout: 30
+  pool_size: 10
+  max_overflow: 20
+
+# Configuración del Sistema de Ranking
+ranking:
+  # Pesos para el ranking combinado
+  weights:
+    usage: 0.35          # Peso del ranking por uso
+    instability: 0.35    # Peso del ranking por inestabilidad
+    rate_of_change: 0.30 # Peso del ranking por tasa de cambio
+  
+  # Umbrales de advertencia
+  thresholds:
+    usage_warning: 85.0      # Porcentaje de uso que genera advertencia
+    instability_warning: 0.20 # Nivel de inestabilidad que genera advertencia
+    rate_of_change_warning: 0.15 # Tasa de cambio que genera advertencia
+  
+  # Configuración de análisis temporal
+  temporal:
+    window_days: 30      # Ventana de análisis en días
+    min_data_points: 10  # Mínimo de puntos de datos requeridos
+    trend_periods: 7     # Períodos para análisis de tendencias
+
+# Configuración de Logging
+logging:
+  level: "INFO"                    # Nivel de logging (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  file: "logs/hdd_data_analysis_v2.log"
+  max_size: "20MB"                 # Tamaño máximo del archivo de log
+  backup_count: 10                 # Número de archivos de backup
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # Logs específicos
+  ranking_log: "logs/ranking_hdd_v2.log"
+  error_log: "logs/errors_hdd_v2.log"
+
+# Configuración de Procesamiento
+processing:
+  batch_size: 1000        # Tamaño del lote para procesamiento
+  max_workers: 4          # Número máximo de workers para procesamiento paralelo
+  timeout_seconds: 300    # Timeout para operaciones de procesamiento
+  
+  # Configuración de retry
+  retry_attempts: 3       # Número de intentos en caso de fallo
+  retry_delay: 5          # Delay entre intentos en segundos
+
+# Configuración de Métricas HDD
+hdd_metrics:
+  # Métricas de uso
+  usage_metrics:
+    - "disk_usage_percent"
+    - "read_operations"
+    - "write_operations"
+    - "io_operations"
+  
+  # Métricas de rendimiento
+  performance_metrics:
+    - "read_latency"
+    - "write_latency"
+    - "throughput"
+    - "queue_depth"
+  
+  # Métricas de salud
+  health_metrics:
+    - "temperature"
+    - "power_on_hours"
+    - "reallocated_sectors"
+    - "pending_sectors"
+    - "uncorrectable_sectors"
+
+# Configuración de Alertas
+alerts:
+  enabled: true
+  email:
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    username: "your_email@gmail.com"
+    password: "your_app_password"
+    recipients: ["admin@company.com"]
+  
+  # Umbrales de alerta
+  thresholds:
+    critical_usage: 95.0
+    critical_temperature: 60.0
+    critical_errors: 10
+
+# Configuración de Reportes
+reports:
+  enabled: true
+  output_format: "html"    # html, pdf, csv
+  output_directory: "reports/"
+  
+  # Configuración de reportes automáticos
+  automatic:
+    enabled: true
+    frequency: "daily"      # daily, weekly, monthly
+    time: "06:00"          # Hora de generación (formato 24h)
+  
+  # Configuración de templates
+  templates:
+    ranking_report: "templates/ranking_report.html"
+    summary_report: "templates/summary_report.html"
+
+# Configuración de API (futuro)
+api:
+  enabled: false
+  host: "0.0.0.0"
+  port: 8080
+  debug: false
+  
+  # Configuración de autenticación
+  auth:
+    enabled: false
+    token_expiry: 3600  # segundos
+
+# Configuración de Cache
+cache:
+  enabled: true
+  type: "memory"         # memory, redis
+  ttl: 3600             # Time to live en segundos
+  max_size: 1000        # Número máximo de elementos en cache
+
+# Configuración de Monitoreo
+monitoring:
+  enabled: true
+  metrics_collection: true
+  health_check_interval: 300  # segundos
+  
+  # Configuración de dashboards
+  dashboards:
+    enabled: true
+    refresh_interval: 60      # segundos
+    max_data_points: 1000
+
+# Configuración de Seguridad
+security:
+  # Encriptación de datos sensibles
+  encryption:
+    enabled: true
+    algorithm: "AES-256"
+    key_file: "config/encryption.key"
+  
+  # Validación de entrada
+  input_validation:
+    enabled: true
+    max_string_length: 1000
+    allowed_file_types: ["csv", "xlsx", "json"]
+
+# Configuración de Backup
+backup:
+  enabled: true
+  frequency: "daily"
+  retention_days: 30
+  backup_directory: "backups/"
+  
+  # Configuración de backup de base de datos
+  database:
+    enabled: true
+    include_logs: false
+    compression: true
+
+# Configuración de Desarrollo
+development:
+  debug_mode: false
+  test_mode: false
+  mock_data: false
+  
+  # Configuración de testing
+  testing:
+    enabled: true
+    test_database: "OTMS_TEST"
+    cleanup_after_tests: true
+
+# Configuración de Performance
+performance:
+  # Optimización de consultas
+  query_optimization:
+    enabled: true
+    max_query_time: 30  # segundos
+    use_indexes: true
+  
+  # Configuración de memoria
+  memory:
+    max_usage_percent: 80
+    cleanup_interval: 3600  # segundos
+
+# Configuración de Internacionalización
+i18n:
+  default_language: "es"
+  supported_languages: ["es", "en"]
+  date_format: "%Y-%m-%d %H:%M:%S"
+  timezone: "America/Bogota"
+
+# Configuración de Integración
+integration:
+  # Integración con sistemas externos
+  external_systems:
+    monitoring_tools: []
+    ticketing_systems: []
+    notification_services: []
+  
+  # Webhooks
+  webhooks:
+    enabled: false
+    endpoints: []
+    retry_attempts: 3
+    timeout: 30 

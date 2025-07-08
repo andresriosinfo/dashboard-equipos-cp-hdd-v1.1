@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  hdd-data-analysis:
+    build: .
+    container_name: hdd-data-analysis
+    restart: unless-stopped
+    environment:
+      # Variables de entorno para la base de datos
+      - DB_HOST=${DB_HOST:-10.147.17.185}
+      - DB_PORT=${DB_PORT:-1433}
+      - DB_NAME=${DB_NAME:-cmpc_20240925_093000}
+      - DB_USER=${DB_USER:-otms}
+      - DB_PASSWORD=${DB_PASSWORD:-Password1}
+      # Variables de entorno para la aplicación
+      - PYTHONPATH=/app
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      # Montar logs para persistencia
+      - ./logs:/app/logs
+      # Montar configuración si es necesario
+      - ./hdd_config_params.yaml:/app/hdd_config_params.yaml:ro
+    networks:
+      - hdd-network
+    # Comando para ejecución programada (cada 24 horas)
+    command: ["python", "main.py", "--run-scheduled"]
+    # Health check para verificar que la aplicación esté funcionando
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Servicio para ejecución manual (una sola vez)
+  hdd-data-analysis-once:
+    build: .
+    container_name: hdd-data-analysis-once
+    environment:
+      - DB_HOST=${DB_HOST:-10.147.17.185}
+      - DB_PORT=${DB_PORT:-1433}
+      - DB_NAME=${DB_NAME:-cmpc_20240925_093000}
+      - DB_USER=${DB_USER:-otms}
+      - DB_PASSWORD=${DB_PASSWORD:-Password1}
+      - PYTHONPATH=/app
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ./logs:/app/logs
+      - ./hdd_config_params.yaml:/app/hdd_config_params.yaml:ro
+    networks:
+      - hdd-network
+    command: ["python", "main.py", "--run-once"]
+    profiles:
+      - manual
+
+networks:
+  hdd-network:
+    driver: bridge 

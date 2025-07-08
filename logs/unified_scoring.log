@@ -1,0 +1,286 @@
+2025-07-08 15:35:07,471 - unified_scoring - INFO - ============================================================
+2025-07-08 15:35:07,825 - unified_scoring - INFO - Obteniendo datos CP...
+2025-07-08 15:35:11,480 - cp_data_analysis - INFO - Database connection established successfully for database manager
+2025-07-08 15:35:16,529 - cp_data_analysis - INFO - Schema check and update completed successfully
+2025-07-08 15:35:16,529 - cp_data_analysis - INFO - All required tables have been checked and created if needed
+2025-07-08 15:35:18,528 - cp_data_analysis - INFO - Database connection established successfully for configuration
+2025-07-08 15:35:19,039 - cp_data_analysis - INFO - Loaded 12 configuration parameters from database
+2025-07-08 15:35:19,147 - cp_data_analysis - INFO - Exported configuration to C:\Users\AndrésRios\OneDrive - InfoDesign Colombia (NIT 901276985)\Documents\OTMS\desarrollo\puntajes\cp_data_analysis_v2\src\config_params.yaml
+2025-07-08 15:35:19,147 - cp_data_analysis - INFO - Conectando a la base de datos cmpc_20240925_093000 en 10.147.17.185:1433
+2025-07-08 15:35:20,523 - cp_data_analysis - INFO - Conexión a la base de datos establecida con éxito
+2025-07-08 15:35:20,524 - cp_data_analysis - INFO - Ejecutando consulta SQL: SELECT * FROM dbo.nv_cp_history
+2025-07-08 15:35:35,929 - cp_data_analysis - INFO - Consulta SQL completada en 15.41s
+2025-07-08 15:35:35,929 - cp_data_analysis - INFO - Datos obtenidos: 153117 filas, 6 columnas
+2025-07-08 15:35:37,179 - unified_scoring - INFO - Datos CP obtenidos: 11 DataFrames
+2025-07-08 15:35:37,194 - unified_scoring - INFO - Obteniendo datos HDD...
+2025-07-08 15:35:38,974 - hdd_data_analysis - INFO - Database connection established successfully for HDD logging
+2025-07-08 15:35:39,519 - hdd_data_analysis - INFO - HDD logging tables created or verified
+2025-07-08 15:35:40,854 - hdd_data_analysis - INFO - Database connection established successfully for HDD operations
+2025-07-08 15:35:41,164 - hdd_data_analysis - INFO - HDD metadata table created or verified
+2025-07-08 15:35:41,879 - hdd_data_analysis - INFO - HDD results tables created or verified
+2025-07-08 15:35:43,228 - hdd_data_analysis - INFO - Database connection established successfully for HDD configuration
+2025-07-08 15:35:43,559 - hdd_data_analysis - INFO - HDD configuration table created or verified
+2025-07-08 15:35:43,799 - hdd_data_analysis - INFO - Loaded 16 configuration parameters from database
+2025-07-08 15:35:43,799 - hdd_data_analysis - INFO - Conectando a la base de datos cmpc_20240925_093000 en 10.147.17.185:1433 para datos HDD
+2025-07-08 15:35:45,136 - hdd_data_analysis - INFO - Conexión a la base de datos establecida con éxito para HDD
+2025-07-08 15:35:45,136 - hdd_data_analysis - INFO - Ejecutando consulta SQL para HDD: SELECT * FROM dbo.nv_hdd_history
+2025-07-08 15:35:49,275 - hdd_data_analysis - INFO - Query executed successfully: 36348 rows returned
+2025-07-08 15:35:49,404 - hdd_data_analysis - INFO - Consulta SQL completada en 4.27s
+2025-07-08 15:35:49,404 - hdd_data_analysis - INFO - Datos HDD obtenidos: 36348 filas, 5 columnas
+2025-07-08 15:35:50,537 - unified_scoring - INFO - Datos HDD obtenidos: 13 DataFrames
+2025-07-08 15:35:50,539 - unified_scoring - INFO - Calculando métricas CP...
+2025-07-08 15:35:51,249 - unified_scoring - INFO - Calculando métricas HDD...
+2025-07-08 15:35:51,932 - unified_scoring - INFO - Calculando puntuaciones unificadas...
+2025-07-08 15:35:52,037 - unified_scoring - INFO - Puntuaciones calculadas para 156 equipos
+2025-07-08 15:35:52,039 - unified_scoring - INFO - Generando columnas de explicación...
+2025-07-08 15:35:52,829 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:53,239 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:53,674 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:54,109 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:54,803 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:55,439 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:56,139 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:56,781 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:57,424 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:58,060 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:58,709 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:59,349 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:35:59,998 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:00,639 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:01,280 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:01,969 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:02,612 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:03,249 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:03,905 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:04,562 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:05,278 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:06,109 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:06,759 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:07,411 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:08,062 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:08,715 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:09,409 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:10,069 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:10,714 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:11,369 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:12,071 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:12,719 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:13,369 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:14,040 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:14,692 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:15,329 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:15,978 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:16,638 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:17,279 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:17,929 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:18,578 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:19,219 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:19,884 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:20,526 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:21,179 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:21,992 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:22,638 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:23,279 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:23,929 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:24,579 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:25,226 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:25,889 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:26,547 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:27,199 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:27,839 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:28,507 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:29,155 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:29,809 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:30,465 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:31,109 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:31,761 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:32,414 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:33,071 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:33,722 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:34,375 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:35,021 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:35,674 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:36,317 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:36,971 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:37,621 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:38,268 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:38,914 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:39,623 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:40,269 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:40,916 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:41,636 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:42,315 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:42,969 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:43,690 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:44,341 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:44,984 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:45,635 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:46,279 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:46,931 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:47,658 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:48,341 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:48,995 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:49,646 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:50,293 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:50,934 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:51,578 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:52,287 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:52,930 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:53,575 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:54,217 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:54,860 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:55,502 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:56,145 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:56,807 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:57,449 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:58,095 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:58,738 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:36:59,377 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:00,052 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:00,704 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:01,478 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:02,128 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:02,771 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:03,420 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:04,066 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:04,849 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:05,495 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:06,141 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:06,799 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:07,444 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:08,108 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:08,761 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:09,419 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:10,089 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:10,744 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:11,390 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:12,044 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:12,691 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:13,344 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:13,993 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:14,644 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:15,293 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:15,973 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:16,621 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:17,334 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:18,040 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:18,989 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:19,699 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:20,369 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:21,029 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:21,755 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:22,529 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:23,169 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:23,823 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:24,469 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:25,139 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:25,798 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:26,464 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:27,108 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:27,879 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:28,529 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:29,174 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:30,114 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:30,755 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:31,529 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:32,172 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:32,837 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:33,472 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:34,135 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:34,839 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:35,478 - cp_data_analysis - ERROR - Error executing query: List argument must consist only of tuples or dictionaries
+2025-07-08 15:37:36,120 - unified_scoring - INFO - Resultados guardados en base de datos CP: 156 registros
+2025-07-08 15:37:36,120 - unified_scoring - INFO -    - Total equipos analizados: 156
+2025-07-08 15:37:36,120 - unified_scoring - INFO -    - Equipos con datos CP: 56
+2025-07-08 15:37:36,120 - unified_scoring - INFO -    - Equipos con datos HDD: 100
+2025-07-08 15:37:36,120 - unified_scoring - INFO -    - Puntuación promedio: 50.22
+2025-07-08 15:37:36,120 - unified_scoring - INFO -    - Mejor puntuación: 77.00
+2025-07-08 15:37:36,120 - unified_scoring - INFO -    - Peor puntuación: 23.25
+2025-07-08 15:51:52,230 - unified_scoring - INFO - INICIANDO ANÁLISIS DE PUNTUACIÓN UNIFICADA
+2025-07-08 15:51:52,231 - unified_scoring - INFO - ============================================================
+2025-07-08 15:51:52,231 - unified_scoring - INFO - PASO 1: Obteniendo datos CP...
+2025-07-08 15:51:52,797 - unified_scoring - INFO - Obteniendo datos CP...
+2025-07-08 15:51:56,031 - cp_data_analysis - INFO - Database connection established successfully for database manager
+2025-07-08 15:52:01,195 - cp_data_analysis - INFO - Schema check and update completed successfully
+2025-07-08 15:52:01,196 - cp_data_analysis - INFO - All required tables have been checked and created if needed
+2025-07-08 15:52:03,094 - cp_data_analysis - INFO - Database connection established successfully for configuration
+2025-07-08 15:52:03,519 - cp_data_analysis - INFO - Loaded 12 configuration parameters from database
+2025-07-08 15:52:03,631 - cp_data_analysis - INFO - Exported configuration to C:\Users\AndrésRios\OneDrive - InfoDesign Colombia (NIT 901276985)\Documents\OTMS\desarrollo\puntajes\cp_data_analysis_v2\src\config_params.yaml
+2025-07-08 15:52:03,632 - cp_data_analysis - INFO - Conectando a la base de datos cmpc_20240925_093000 en 10.147.17.185:1433
+2025-07-08 15:52:05,061 - cp_data_analysis - INFO - Conexión a la base de datos establecida con éxito
+2025-07-08 15:52:05,062 - cp_data_analysis - INFO - Ejecutando consulta SQL: SELECT * FROM dbo.nv_cp_history
+2025-07-08 15:52:16,197 - unified_scoring - INFO - INICIANDO ANÁLISIS DE PUNTUACIÓN UNIFICADA
+2025-07-08 15:52:16,198 - unified_scoring - INFO - ============================================================
+2025-07-08 15:52:16,198 - unified_scoring - INFO - PASO 1: Obteniendo datos CP...
+2025-07-08 15:52:16,496 - unified_scoring - INFO - Obteniendo datos CP...
+2025-07-08 15:52:19,944 - cp_data_analysis - INFO - Database connection established successfully for database manager
+2025-07-08 15:52:24,647 - cp_data_analysis - INFO - Schema check and update completed successfully
+2025-07-08 15:52:24,647 - cp_data_analysis - INFO - All required tables have been checked and created if needed
+2025-07-08 15:52:26,339 - cp_data_analysis - INFO - Consulta SQL completada en 21.28s
+2025-07-08 15:52:26,340 - cp_data_analysis - INFO - Datos obtenidos: 153117 filas, 6 columnas
+2025-07-08 15:52:26,611 - cp_data_analysis - INFO - Database connection established successfully for configuration
+2025-07-08 15:52:27,047 - cp_data_analysis - INFO - Loaded 12 configuration parameters from database
+2025-07-08 15:52:27,158 - cp_data_analysis - INFO - Exported configuration to C:\Users\AndrésRios\OneDrive - InfoDesign Colombia (NIT 901276985)\Documents\OTMS\desarrollo\puntajes\cp_data_analysis_v2\src\config_params.yaml
+2025-07-08 15:52:27,159 - cp_data_analysis - INFO - Conectando a la base de datos cmpc_20240925_093000 en 10.147.17.185:1433
+2025-07-08 15:52:27,465 - unified_scoring - INFO - Datos CP obtenidos: 11 DataFrames
+2025-07-08 15:52:27,466 - unified_scoring - INFO - PASO 2: Obteniendo datos HDD...
+2025-07-08 15:52:27,477 - unified_scoring - INFO - Obteniendo datos HDD...
+2025-07-08 15:52:28,508 - cp_data_analysis - INFO - Conexión a la base de datos establecida con éxito
+2025-07-08 15:52:28,509 - cp_data_analysis - INFO - Ejecutando consulta SQL: SELECT * FROM dbo.nv_cp_history
+2025-07-08 15:52:28,827 - hdd_data_analysis - INFO - Database connection established successfully for HDD logging
+2025-07-08 15:52:29,397 - hdd_data_analysis - INFO - HDD logging tables created or verified
+2025-07-08 15:52:30,795 - hdd_data_analysis - INFO - Database connection established successfully for HDD operations
+2025-07-08 15:52:31,105 - hdd_data_analysis - INFO - HDD metadata table created or verified
+2025-07-08 15:52:31,826 - hdd_data_analysis - INFO - HDD results tables created or verified
+2025-07-08 15:52:33,663 - hdd_data_analysis - INFO - Database connection established successfully for HDD configuration
+2025-07-08 15:52:33,986 - hdd_data_analysis - INFO - HDD configuration table created or verified
+2025-07-08 15:52:34,196 - hdd_data_analysis - INFO - Loaded 16 configuration parameters from database
+2025-07-08 15:52:34,197 - hdd_data_analysis - INFO - Conectando a la base de datos cmpc_20240925_093000 en 10.147.17.185:1433 para datos HDD
+2025-07-08 15:52:35,565 - hdd_data_analysis - INFO - Conexión a la base de datos establecida con éxito para HDD
+2025-07-08 15:52:35,566 - hdd_data_analysis - INFO - Ejecutando consulta SQL para HDD: SELECT * FROM dbo.nv_hdd_history
+2025-07-08 15:52:39,455 - hdd_data_analysis - INFO - Query executed successfully: 36348 rows returned
+2025-07-08 15:52:39,619 - hdd_data_analysis - INFO - Consulta SQL completada en 4.05s
+2025-07-08 15:52:39,620 - hdd_data_analysis - INFO - Datos HDD obtenidos: 36348 filas, 5 columnas
+2025-07-08 15:52:40,604 - unified_scoring - INFO - Datos HDD obtenidos: 13 DataFrames
+2025-07-08 15:52:40,604 - unified_scoring - INFO - PASO 3: Calculando métricas CP...
+2025-07-08 15:52:40,604 - unified_scoring - INFO - Calculando métricas CP...
+2025-07-08 15:52:41,433 - unified_scoring - INFO - PASO 4: Calculando métricas HDD...
+2025-07-08 15:52:41,434 - unified_scoring - INFO - Calculando métricas HDD...
+2025-07-08 15:52:42,260 - unified_scoring - INFO - PASO 5: Calculando puntuaciones unificadas...
+2025-07-08 15:52:42,260 - unified_scoring - INFO - Calculando puntuaciones unificadas...
+2025-07-08 15:52:42,261 - unified_scoring - INFO - Modo: Solo equipos con datos CP y HDD
+2025-07-08 15:52:42,261 - unified_scoring - INFO - Equipos CP: 56, Equipos HDD: 100
+2025-07-08 15:52:42,261 - unified_scoring - INFO - Equipos con ambas fuentes: 0
+2025-07-08 15:52:42,261 - unified_scoring - WARNING - No hay equipos que cumplan los criterios de inclusión
+2025-07-08 15:52:42,262 - unified_scoring - WARNING - No se pudieron calcular puntuaciones
+2025-07-08 15:52:45,638 - cp_data_analysis - INFO - Consulta SQL completada en 17.13s
+2025-07-08 15:52:45,639 - cp_data_analysis - INFO - Datos obtenidos: 153117 filas, 6 columnas
+2025-07-08 15:52:46,871 - unified_scoring - INFO - Datos CP obtenidos: 11 DataFrames
+2025-07-08 15:52:46,873 - unified_scoring - INFO - PASO 2: Obteniendo datos HDD...
+2025-07-08 15:52:46,886 - unified_scoring - INFO - Obteniendo datos HDD...
+2025-07-08 15:52:48,278 - hdd_data_analysis - INFO - Database connection established successfully for HDD logging
+2025-07-08 15:52:48,798 - hdd_data_analysis - INFO - HDD logging tables created or verified
+2025-07-08 15:52:50,196 - hdd_data_analysis - INFO - Database connection established successfully for HDD operations
+2025-07-08 15:52:50,506 - hdd_data_analysis - INFO - HDD metadata table created or verified
+2025-07-08 15:52:51,348 - hdd_data_analysis - INFO - HDD results tables created or verified
+2025-07-08 15:52:52,735 - hdd_data_analysis - INFO - Database connection established successfully for HDD configuration
+2025-07-08 15:52:53,049 - hdd_data_analysis - INFO - HDD configuration table created or verified
+2025-07-08 15:52:53,263 - hdd_data_analysis - INFO - Loaded 16 configuration parameters from database
+2025-07-08 15:52:53,263 - hdd_data_analysis - INFO - Conectando a la base de datos cmpc_20240925_093000 en 10.147.17.185:1433 para datos HDD
+2025-07-08 15:52:54,619 - hdd_data_analysis - INFO - Conexión a la base de datos establecida con éxito para HDD
+2025-07-08 15:52:54,621 - hdd_data_analysis - INFO - Ejecutando consulta SQL para HDD: SELECT * FROM dbo.nv_hdd_history
+2025-07-08 15:52:58,157 - hdd_data_analysis - INFO - Query executed successfully: 36348 rows returned
+2025-07-08 15:52:58,299 - hdd_data_analysis - INFO - Consulta SQL completada en 3.68s
+2025-07-08 15:52:58,299 - hdd_data_analysis - INFO - Datos HDD obtenidos: 36348 filas, 5 columnas
+2025-07-08 15:52:59,333 - unified_scoring - INFO - Datos HDD obtenidos: 13 DataFrames
+2025-07-08 15:52:59,333 - unified_scoring - INFO - PASO 3: Calculando métricas CP...
+2025-07-08 15:52:59,334 - unified_scoring - INFO - Calculando métricas CP...
+2025-07-08 15:53:00,436 - unified_scoring - INFO - PASO 4: Calculando métricas HDD...
+2025-07-08 15:53:00,437 - unified_scoring - INFO - Calculando métricas HDD...
+2025-07-08 15:53:01,505 - unified_scoring - INFO - PASO 5: Calculando puntuaciones unificadas...
+2025-07-08 15:53:01,505 - unified_scoring - INFO - Calculando puntuaciones unificadas...
+2025-07-08 15:53:01,506 - unified_scoring - INFO - Modo: Solo equipos con datos CP y HDD
+2025-07-08 15:53:01,506 - unified_scoring - INFO - Equipos CP: 56, Equipos HDD: 100
+2025-07-08 15:53:01,507 - unified_scoring - INFO - Equipos con ambas fuentes: 0
+2025-07-08 15:53:01,507 - unified_scoring - WARNING - No hay equipos que cumplan los criterios de inclusión
+2025-07-08 15:53:01,508 - unified_scoring - WARNING - No se pudieron calcular puntuaciones

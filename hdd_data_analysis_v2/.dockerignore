@@ -1,0 +1,71 @@
+# Archivos de desarrollo
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración local
+.env
+.env.local
+.env.production
+
+# Archivos de prueba
+test_*.py
+*_test.py
+tests/
+
+# Documentación
+README.md
+*.md
+docs/
+
+# Archivos de control de versiones
+.git/
+.gitignore
+
+# Archivos de Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Archivos de backup
+*.bak
+*.backup 

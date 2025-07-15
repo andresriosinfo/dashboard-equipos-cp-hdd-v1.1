@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 
-st.set_page_config(page_title="Team Dashboard - CP & HDD", layout="wide", page_icon="📊")
+st.set_page_config(page_title="Computer Units Dashboard - CP & HDD", layout="wide", page_icon="📊")
 
 # --- Load data ---
 @st.cache_data
@@ -25,17 +25,17 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Global Dashboard ---
-st.title("Team Dashboard - CP & HDD")
+st.title("Computer Units Dashboard - CP & HDD")
 st.markdown("""
-Visualize the global and detailed performance of teams according to their CP and HDD metrics. 
-Use the search tool to see the details of each team.
+Visualize the global and detailed performance of computer units according to their CP and HDD metrics. 
+Use the search tool to see the details of each unit.
 """)
 
 col1, col2 = st.columns(2)
 
 with col1:
     st.header("Global CP Overview")
-    st.metric("Teams Analyzed", len(df_cp))
+    st.metric("Units Analyzed", len(df_cp))
     st.metric("Maximum Score", f"{df_cp['score_final'].max():.2f}")
     st.metric("Average Score", f"{df_cp['score_final'].mean():.2f}")
     st.metric("Minimum Score", f"{df_cp['score_final'].min():.2f}")
@@ -48,7 +48,7 @@ with col1:
 
 with col2:
     st.header("Global HDD Overview")
-    st.metric("Teams Analyzed", len(df_hdd))
+    st.metric("Units Analyzed", len(df_hdd))
     st.metric("Maximum Score", f"{df_hdd['score_final'].max():.2f}")
     st.metric("Average Score", f"{df_hdd['score_final'].mean():.2f}")
     st.metric("Minimum Score", f"{df_hdd['score_final'].min():.2f}")
@@ -70,9 +70,9 @@ comp = pd.DataFrame({
 st.plotly_chart(px.box(comp, points="all", title="CP vs HDD Scores Distribution", 
                        color_discrete_sequence=['#FF6B6B', '#4ECDC4']), use_container_width=True)
 
-# --- Top and Bottom teams ---
+# --- Top and Bottom units ---
 st.markdown("---")
-st.subheader("Top and Worst Teams")
+st.subheader("Top and Worst Units")
 col3, col4 = st.columns(2)
 with col3:
     st.markdown("#### Top 5 CP")
@@ -85,18 +85,18 @@ with col4:
     st.markdown("#### Worst 5 HDD")
     st.dataframe(df_hdd[['posicion','equipo','score_final','categoria']].tail(5), use_container_width=True, hide_index=True)
 
-# --- Team Detail ---
+# --- Unit Detail ---
 st.markdown("---")
-st.header("Team Detail")
+st.header("Unit Detail")
 
-# Join all possible teams
-all_teams = sorted(set(df_cp['equipo']).union(set(df_hdd['equipo'])), key=lambda x: str(x))
-team_sel = st.selectbox("Select a team to see details:", all_teams)
+# Join all possible units
+all_units = sorted(set(df_cp['equipo']).union(set(df_hdd['equipo'])), key=lambda x: str(x))
+unit_sel = st.selectbox("Select a unit to see details:", all_units)
 
 col5, col6 = st.columns(2)
 with col5:
     st.subheader("CP Detail")
-    row_cp = df_cp[df_cp['equipo'] == team_sel]
+    row_cp = df_cp[df_cp['equipo'] == unit_sel]
     if not row_cp.empty:
         st.metric("CP Score", f"{row_cp.iloc[0]['score_final']:.2f}", help="Global CP score")
         st.write(f"Category: **{row_cp.iloc[0]['categoria']}**")
@@ -111,10 +111,10 @@ with col5:
                 cp_areas = [cp_areas]
         st.write(f"CP Areas: {', '.join(cp_areas) if cp_areas else 'N/A'}")
     else:
-        st.info("This team has no CP data.")
+        st.info("This unit has no CP data.")
 with col6:
     st.subheader("HDD Detail")
-    row_hdd = df_hdd[df_hdd['equipo'] == team_sel]
+    row_hdd = df_hdd[df_hdd['equipo'] == unit_sel]
     if not row_hdd.empty:
         st.metric("HDD Score", f"{row_hdd.iloc[0]['score_final']:.2f}", help="Global HDD score")
         st.write(f"Category: **{row_hdd.iloc[0]['categoria']}**")
@@ -129,7 +129,7 @@ with col6:
                 hdd_units = [hdd_units]
         st.write(f"HDD Units: {', '.join(hdd_units) if hdd_units else 'N/A'}")
     else:
-        st.info("This team has no HDD data.")
+        st.info("This unit has no HDD data.")
 
 st.markdown("---")
 st.caption("Developed by InfoDesign Colombia | Streamlit Dashboard V1.1 | 2024") 

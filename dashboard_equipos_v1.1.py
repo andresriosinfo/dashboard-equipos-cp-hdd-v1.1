@@ -12,6 +12,17 @@ def load_data():
     df_hdd = pd.read_csv('ranking_hdd.csv')
     return df_cp, df_hdd
 
+def translate_category(category):
+    """Translate Spanish categories to English"""
+    translations = {
+        'Excelente': 'Excellent',
+        'Muy Bueno': 'Very Good',
+        'Bueno': 'Good',
+        'Regular': 'Regular',
+        'Necesita Mejora': 'Needs Improvement'
+    }
+    return translations.get(category, category)
+
 df_cp, df_hdd = load_data()
 
 # --- Styles ---
@@ -78,19 +89,23 @@ with col3:
     st.markdown("#### Top 5 CP")
     df_cp_top = df_cp[['posicion','equipo','score_final','categoria']].head(5).copy()
     df_cp_top.columns = ['Position', 'Unit', 'Score', 'Category']
+    df_cp_top['Category'] = df_cp_top['Category'].apply(translate_category)
     st.dataframe(df_cp_top, use_container_width=True, hide_index=True)
     st.markdown("#### Worst 5 CP")
     df_cp_worst = df_cp[['posicion','equipo','score_final','categoria']].tail(5).copy()
     df_cp_worst.columns = ['Position', 'Unit', 'Score', 'Category']
+    df_cp_worst['Category'] = df_cp_worst['Category'].apply(translate_category)
     st.dataframe(df_cp_worst, use_container_width=True, hide_index=True)
 with col4:
     st.markdown("#### Top 5 HDD")
     df_hdd_top = df_hdd[['posicion','equipo','score_final','categoria']].head(5).copy()
     df_hdd_top.columns = ['Position', 'Unit', 'Score', 'Category']
+    df_hdd_top['Category'] = df_hdd_top['Category'].apply(translate_category)
     st.dataframe(df_hdd_top, use_container_width=True, hide_index=True)
     st.markdown("#### Worst 5 HDD")
     df_hdd_worst = df_hdd[['posicion','equipo','score_final','categoria']].tail(5).copy()
     df_hdd_worst.columns = ['Position', 'Unit', 'Score', 'Category']
+    df_hdd_worst['Category'] = df_hdd_worst['Category'].apply(translate_category)
     st.dataframe(df_hdd_worst, use_container_width=True, hide_index=True)
 
 # --- Unit Detail ---
@@ -107,7 +122,7 @@ with col5:
     row_cp = df_cp[df_cp['equipo'] == unit_sel]
     if not row_cp.empty:
         st.metric("CP Score", f"{row_cp.iloc[0]['score_final']:.2f}", help="Global CP score")
-        st.write(f"Category: **{row_cp.iloc[0]['categoria']}**")
+        st.write(f"Category: **{translate_category(row_cp.iloc[0]['categoria'])}**")
         st.write(f"Explanation: {row_cp.iloc[0]['explicacion']}")
         st.write(f"Recommendations: {row_cp.iloc[0]['recomendaciones']}")
         cp_areas = row_cp.iloc[0]['areas_cp']
@@ -125,7 +140,7 @@ with col6:
     row_hdd = df_hdd[df_hdd['equipo'] == unit_sel]
     if not row_hdd.empty:
         st.metric("HDD Score", f"{row_hdd.iloc[0]['score_final']:.2f}", help="Global HDD score")
-        st.write(f"Category: **{row_hdd.iloc[0]['categoria']}**")
+        st.write(f"Category: **{translate_category(row_hdd.iloc[0]['categoria'])}**")
         st.write(f"Explanation: {row_hdd.iloc[0]['explicacion']}")
         st.write(f"Recommendations: {row_hdd.iloc[0]['recomendaciones']}")
         hdd_units = row_hdd.iloc[0]['unidades_hdd']

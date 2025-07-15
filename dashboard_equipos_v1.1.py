@@ -76,14 +76,22 @@ st.subheader("Top and Worst Units")
 col3, col4 = st.columns(2)
 with col3:
     st.markdown("#### Top 5 CP")
-    st.dataframe(df_cp[['posicion','equipo','score_final','categoria']].head(5), use_container_width=True, hide_index=True)
+    df_cp_top = df_cp[['posicion','equipo','score_final','categoria']].head(5).copy()
+    df_cp_top.columns = ['Position', 'Unit', 'Score', 'Category']
+    st.dataframe(df_cp_top, use_container_width=True, hide_index=True)
     st.markdown("#### Worst 5 CP")
-    st.dataframe(df_cp[['posicion','equipo','score_final','categoria']].tail(5), use_container_width=True, hide_index=True)
+    df_cp_worst = df_cp[['posicion','equipo','score_final','categoria']].tail(5).copy()
+    df_cp_worst.columns = ['Position', 'Unit', 'Score', 'Category']
+    st.dataframe(df_cp_worst, use_container_width=True, hide_index=True)
 with col4:
     st.markdown("#### Top 5 HDD")
-    st.dataframe(df_hdd[['posicion','equipo','score_final','categoria']].head(5), use_container_width=True, hide_index=True)
+    df_hdd_top = df_hdd[['posicion','equipo','score_final','categoria']].head(5).copy()
+    df_hdd_top.columns = ['Position', 'Unit', 'Score', 'Category']
+    st.dataframe(df_hdd_top, use_container_width=True, hide_index=True)
     st.markdown("#### Worst 5 HDD")
-    st.dataframe(df_hdd[['posicion','equipo','score_final','categoria']].tail(5), use_container_width=True, hide_index=True)
+    df_hdd_worst = df_hdd[['posicion','equipo','score_final','categoria']].tail(5).copy()
+    df_hdd_worst.columns = ['Position', 'Unit', 'Score', 'Category']
+    st.dataframe(df_hdd_worst, use_container_width=True, hide_index=True)
 
 # --- Unit Detail ---
 st.markdown("---")

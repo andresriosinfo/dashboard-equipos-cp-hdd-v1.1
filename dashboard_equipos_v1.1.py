@@ -53,9 +53,31 @@ with col1:
     st.metric("Median", f"{df_cp['score_final'].median():.2f}")
     st.metric("Standard Deviation", f"{df_cp['score_final'].std():.2f}")
     st.markdown("#### CP Categories Distribution")
-    st.plotly_chart(px.pie(df_cp, names='categoria', title='CP Categories', color_discrete_sequence=px.colors.sequential.Blues), use_container_width=True)
+    # Create a copy and translate categories
+    df_cp_pie = df_cp.copy()
+    df_cp_pie['categoria_en'] = df_cp_pie['categoria'].apply(translate_category)
+    
+    # Define color mapping from worst to best
+    color_map = {
+        'Needs Improvement': '#FF6B6B',  # Red (worst)
+        'Regular': '#FFA500',            # Orange
+        'Good': '#FFD700',               # Yellow
+        'Very Good': '#90EE90',          # Light Green
+        'Excellent': '#32CD32'           # Green (best)
+    }
+    
+    fig_pie_cp = px.pie(df_cp_pie, names='categoria_en', title='CP Categories', 
+                        color='categoria_en', color_discrete_map=color_map)
+    st.plotly_chart(fig_pie_cp, use_container_width=True)
+    
     st.markdown("#### CP Scores Histogram")
-    st.plotly_chart(px.histogram(df_cp, x='score_final', nbins=20, color='categoria', color_discrete_sequence=px.colors.sequential.Blues), use_container_width=True)
+    # Create a copy and translate categories for histogram
+    df_cp_hist = df_cp.copy()
+    df_cp_hist['categoria_en'] = df_cp_hist['categoria'].apply(translate_category)
+    
+    fig_hist_cp = px.histogram(df_cp_hist, x='score_final', nbins=20, color='categoria_en', 
+                               color_discrete_map=color_map, title='CP Scores Distribution')
+    st.plotly_chart(fig_hist_cp, use_container_width=True)
 
 with col2:
     st.header("Global HDD Overview")
@@ -66,9 +88,23 @@ with col2:
     st.metric("Median", f"{df_hdd['score_final'].median():.2f}")
     st.metric("Standard Deviation", f"{df_hdd['score_final'].std():.2f}")
     st.markdown("#### HDD Categories Distribution")
-    st.plotly_chart(px.pie(df_hdd, names='categoria', title='HDD Categories', color_discrete_sequence=px.colors.sequential.Greens), use_container_width=True)
+    # Create a copy and translate categories
+    df_hdd_pie = df_hdd.copy()
+    df_hdd_pie['categoria_en'] = df_hdd_pie['categoria'].apply(translate_category)
+    
+    # Use the same color mapping for consistency
+    fig_pie_hdd = px.pie(df_hdd_pie, names='categoria_en', title='HDD Categories', 
+                         color='categoria_en', color_discrete_map=color_map)
+    st.plotly_chart(fig_pie_hdd, use_container_width=True)
+    
     st.markdown("#### HDD Scores Histogram")
-    st.plotly_chart(px.histogram(df_hdd, x='score_final', nbins=20, color='categoria', color_discrete_sequence=px.colors.sequential.Greens), use_container_width=True)
+    # Create a copy and translate categories for histogram
+    df_hdd_hist = df_hdd.copy()
+    df_hdd_hist['categoria_en'] = df_hdd_hist['categoria'].apply(translate_category)
+    
+    fig_hist_hdd = px.histogram(df_hdd_hist, x='score_final', nbins=20, color='categoria_en', 
+                                color_discrete_map=color_map, title='HDD Scores Distribution')
+    st.plotly_chart(fig_hist_hdd, use_container_width=True)
 
 # --- Visual comparison ---
 st.markdown("---")

@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 from datetime import datetime
 import ast
 
-st.set_page_config(page_title="Team Analysis V1.5.1 - CP & HDD", layout="wide", page_icon="🔍")
+st.set_page_config(page_title="Computer Units Analysis V1.5.1 - CP & HDD", layout="wide", page_icon="🔍")
 
 # --- Load data ---
 @st.cache_data
@@ -21,6 +21,17 @@ def load_data():
         df_hdd['unidades_hdd'] = df_hdd['unidades_hdd'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
     
     return df_cp, df_hdd
+
+def translate_category(category):
+    """Translate Spanish categories to English"""
+    translations = {
+        'Excelente': 'Excellent',
+        'Muy Bueno': 'Very Good',
+        'Bueno': 'Good',
+        'Regular': 'Regular',
+        'Necesita Mejora': 'Needs Improvement'
+    }
+    return translations.get(category, category)
 
 df_cp, df_hdd = load_data()
 
@@ -39,7 +50,7 @@ def analyze_cp_area_automatic(area, row):
             return {
                 'status': '🔴 CRITICAL',
                 'problem': 'Node process overload',
-                'explanation': f'The team has {filling:.0f} processes per node, indicating severe system overload. This can cause slowness and lockups.',
+                'explanation': f'The unit has {filling:.0f} processes per node, indicating severe system overload. This can cause slowness and lockups.',
                 'action': 'Immediately reduce process load or scale resources'
             }
         elif filling > 5000:
@@ -53,7 +64,7 @@ def analyze_cp_area_automatic(area, row):
             return {
                 'status': '🟢 NORMAL',
                 'problem': 'Balanced process load',
-                'explanation': f'The team handles {filling:.0f} processes per node efficiently.',
+                'explanation': f'The unit handles {filling:.0f} processes per node efficiently.',
                 'action': 'Maintain current configuration'
             }
     
@@ -85,7 +96,7 @@ def analyze_cp_area_automatic(area, row):
             return {
                 'status': '🔴 CRITICAL',
                 'problem': 'Excessive memory usage',
-                'explanation': f'The team is using {filling:.0f}% memory, indicating possible RAM saturation.',
+                'explanation': f'The unit is using {filling:.0f}% memory, indicating possible RAM saturation.',
                 'action': 'Free memory, close unnecessary applications or increase RAM'
             }
         elif filling > 5000:
@@ -99,7 +110,7 @@ def analyze_cp_area_automatic(area, row):
             return {
                 'status': '🟢 NORMAL',
                 'problem': 'Balanced memory usage',
-                'explanation': f'The team uses {filling:.0f}% memory efficiently.',
+                'explanation': f'The unit uses {filling:.0f}% memory efficiently.',
                 'action': 'Maintain current configuration'
             }
     
@@ -154,7 +165,7 @@ def analyze_cp_area_automatic(area, row):
             return {
                 'status': '🔴 CRITICAL',
                 'problem': 'Excessive CPU time consumption',
-                'explanation': f'The team consumes {filling:.0f}% CPU time, indicating very demanding processes.',
+                'explanation': f'The unit consumes {filling:.0f}% CPU time, indicating very demanding processes.',
                 'action': 'Identify and optimize processes that consume too much CPU'
             }
         elif filling > 4000:
@@ -168,7 +179,7 @@ def analyze_cp_area_automatic(area, row):
             return {
                 'status': '🟢 NORMAL',
                 'problem': 'Balanced CPU consumption',
-                'explanation': f'The team consumes {filling:.0f}% CPU efficiently.',
+                'explanation': f'The unit consumes {filling:.0f}% CPU efficiently.',
                 'action': 'Maintain current configuration'
             }
     
@@ -289,17 +300,17 @@ def explain_cp_performance_profile(efficiency, stability, predictability):
     
     # Explain Efficiency
     if efficiency >= 80:
-        explanation.append(f"**Efficiency: {efficiency:.0f}/100** - The team uses its resources very efficiently. It's maximizing its processing capacity.")
+        explanation.append(f"**Efficiency: {efficiency:.0f}/100** - The unit uses its resources very efficiently. It's maximizing its processing capacity.")
     elif efficiency >= 60:
-        explanation.append(f"**Efficiency: {efficiency:.0f}/100** - The team uses its resources acceptably, though there's room for optimization.")
+        explanation.append(f"**Efficiency: {efficiency:.0f}/100** - The unit uses its resources acceptably, though there's room for optimization.")
     elif efficiency >= 40:
-        explanation.append(f"**Efficiency: {efficiency:.0f}/100** - The team could be underutilizing its resources or have configuration problems.")
+        explanation.append(f"**Efficiency: {efficiency:.0f}/100** - The unit could be underutilizing its resources or have configuration problems.")
     else:
-        explanation.append(f"**Efficiency: {efficiency:.0f}/100** - The team is significantly underutilized or has serious configuration problems.")
+        explanation.append(f"**Efficiency: {efficiency:.0f}/100** - The unit is significantly underutilized or has serious configuration problems.")
     
     # Explain Stability
     if stability >= 80:
-        explanation.append(f"**Stability: {stability:.0f}/100** - Performance is very consistent and predictable. The team operates stably.")
+        explanation.append(f"**Stability: {stability:.0f}/100** - Performance is very consistent and predictable. The unit operates stably.")
     elif stability >= 60:
         explanation.append(f"**Stability: {stability:.0f}/100** - Performance is relatively stable, with some minor fluctuations.")
     elif stability >= 40:
@@ -320,13 +331,13 @@ def explain_cp_performance_profile(efficiency, stability, predictability):
     # General explanation
     average_score = (efficiency + stability + predictability) / 3
     if average_score >= 80:
-        explanation.append("**Overall:** The team has an excellent performance profile, with high efficiency, stability and predictability.")
+        explanation.append("**Overall:** The unit has an excellent performance profile, with high efficiency, stability and predictability.")
     elif average_score >= 60:
-        explanation.append("**Overall:** The team has a good performance profile, with some improvement opportunities.")
+        explanation.append("**Overall:** The unit has a good performance profile, with some improvement opportunities.")
     elif average_score >= 40:
-        explanation.append("**Overall:** The team has a regular performance profile that requires optimization in several areas.")
+        explanation.append("**Overall:** The unit has a regular performance profile that requires optimization in several areas.")
     else:
-        explanation.append("**Overall:** The team has a low performance profile that requires immediate attention and significant improvements.")
+        explanation.append("**Overall:** The unit has a low performance profile that requires immediate attention and significant improvements.")
     
     return explanation
 
@@ -336,13 +347,13 @@ def explain_hdd_performance_profile(efficient_use, stability, controlled_changes
     
     # Explain Efficient Use
     if efficient_use >= 80:
-        explanation.append(f"**Efficient Use: {efficient_use:.0f}/100** - The team manages its storage space very efficiently, maintaining optimal balance.")
+        explanation.append(f"**Efficient Use: {efficient_use:.0f}/100** - The unit manages its storage space very efficiently, maintaining optimal balance.")
     elif efficient_use >= 60:
-        explanation.append(f"**Efficient Use: {efficient_use:.0f}/100** - The team manages its storage acceptably, with some optimization opportunities.")
+        explanation.append(f"**Efficient Use: {efficient_use:.0f}/100** - The unit manages its storage acceptably, with some optimization opportunities.")
     elif efficient_use >= 40:
-        explanation.append(f"**Efficient Use: {efficient_use:.0f}/100** - The team could be underutilizing its storage or have file management problems.")
+        explanation.append(f"**Efficient Use: {efficient_use:.0f}/100** - The unit could be underutilizing its storage or have file management problems.")
     else:
-        explanation.append(f"**Efficient Use: {efficient_use:.0f}/100** - The team is significantly underutilizing its storage or has serious management problems.")
+        explanation.append(f"**Efficient Use: {efficient_use:.0f}/100** - The unit is significantly underutilizing its storage or has serious management problems.")
     
     # Explain Stability
     if stability >= 80:
@@ -367,25 +378,25 @@ def explain_hdd_performance_profile(efficient_use, stability, controlled_changes
     # General explanation
     average_score = (efficient_use + stability + controlled_changes) / 3
     if average_score >= 80:
-        explanation.append("**Overall:** The team has an excellent storage profile, with efficient management, stability and controlled changes.")
+        explanation.append("**Overall:** The unit has an excellent storage profile, with efficient management, stability and controlled changes.")
     elif average_score >= 60:
-        explanation.append("**Overall:** The team has a good storage profile, with some improvement opportunities.")
+        explanation.append("**Overall:** The unit has a good storage profile, with some improvement opportunities.")
     elif average_score >= 40:
-        explanation.append("**Overall:** The team has a regular storage profile that requires optimization in several areas.")
+        explanation.append("**Overall:** The unit has a regular storage profile that requires optimization in several areas.")
     else:
-        explanation.append("**Overall:** The team has a low storage profile that requires immediate attention and significant improvements.")
+        explanation.append("**Overall:** The unit has a low storage profile that requires immediate attention and significant improvements.")
     
     return explanation
 
 # --- Main interface ---
-st.title("🔍 Team Analysis")
+st.title("🔍 Computer Units Analysis")
 st.markdown("### Automatic Performance Evaluation System")
 
-# --- Team selector ---
-all_teams = sorted(set(df_cp['equipo']).union(set(df_hdd['equipo'])), key=lambda x: str(x))
-team_sel = st.selectbox("Select a team:", all_teams)
+# --- Unit selector ---
+all_units = sorted(set(df_cp['equipo']).union(set(df_hdd['equipo'])), key=lambda x: str(x))
+unit_sel = st.selectbox("Select a unit:", all_units)
 
-if team_sel:
+if unit_sel:
     st.markdown("---")
     
     # --- GENERAL INFORMATION AND SCORES ---
@@ -394,14 +405,14 @@ if team_sel:
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        st.metric("Team", team_sel)
+        st.metric("Unit", unit_sel)
     
     with col2:
         st.metric("Analysis Date", datetime.now().strftime('%d/%m/%Y'))
     
     with col3:
         # CP Score
-        row_cp = df_cp[df_cp['equipo'] == team_sel]
+        row_cp = df_cp[df_cp['equipo'] == unit_sel]
         if not row_cp.empty:
             score_cp = row_cp.iloc[0]['score_final']
             st.metric("CP Score", f"{score_cp:.1f}/100")
@@ -410,7 +421,7 @@ if team_sel:
     
     with col4:
         # HDD Score
-        row_hdd = df_hdd[df_hdd['equipo'] == team_sel]
+        row_hdd = df_hdd[df_hdd['equipo'] == unit_sel]
         if not row_hdd.empty:
             score_hdd = row_hdd.iloc[0]['score_final']
             st.metric("HDD Score", f"{score_hdd:.1f}/100")
@@ -428,7 +439,7 @@ if team_sel:
             'Type': 'CP (Processing)',
             'Position': f"#{row_cp.iloc[0]['posicion']} of {len(df_cp)}",
             'Score': f"{row_cp.iloc[0]['score_final']:.1f}/100",
-            'Category': row_cp.iloc[0]['categoria']
+            'Category': translate_category(row_cp.iloc[0]['categoria'])
         })
     
     if not row_hdd.empty:
@@ -436,7 +447,7 @@ if team_sel:
             'Type': 'HDD (Storage)',
             'Position': f"#{row_hdd.iloc[0]['posicion']} of {len(df_hdd)}",
             'Score': f"{row_hdd.iloc[0]['score_final']:.1f}/100",
-            'Category': row_hdd.iloc[0]['categoria']
+            'Category': translate_category(row_hdd.iloc[0]['categoria'])
         })
     
     if ranking_data:

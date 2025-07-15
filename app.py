@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import numpy as np
+import ast
 
 # Configuración de la página
 st.set_page_config(
@@ -24,6 +25,13 @@ def load_data():
         # Cargar rankings
         ranking_cp = pd.read_csv('ranking_cp.csv')
         ranking_hdd = pd.read_csv('ranking_hdd.csv')
+        
+        # Convertir columnas de listas si existen
+        if 'areas_cp' in ranking_cp.columns:
+            ranking_cp['areas_cp'] = ranking_cp['areas_cp'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        if 'unidades_hdd' in ranking_hdd.columns:
+            ranking_hdd['unidades_hdd'] = ranking_hdd['unidades_hdd'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        
         return ranking_cp, ranking_hdd
     except Exception as e:
         st.error(f"Error cargando datos: {e}")
@@ -40,7 +48,7 @@ if ranking_cp is None or ranking_hdd is None:
 st.sidebar.title("🎯 Navegación")
 page = st.sidebar.selectbox(
     "Selecciona la vista:",
-    ["📈 Vista Global", "🔍 Análisis por Equipo", "📊 Comparativas"]
+    ["📈 Vista Global", "🔍 Análisis por Equipo", "📊 Comparativas", "📋 Explicaciones Detalladas"]
 )
 
 if page == "📈 Vista Global":
@@ -53,30 +61,30 @@ if page == "📈 Vista Global":
         st.metric(
             label="Total Equipos CP",
             value=len(ranking_cp),
-            delta=f"Puntaje promedio: {ranking_cp['puntaje_final'].mean():.1f}"
+            delta=f"Puntaje promedio: {ranking_cp['score_final'].mean():.1f}"
         )
     
     with col2:
         st.metric(
             label="Total Equipos HDD",
             value=len(ranking_hdd),
-            delta=f"Puntaje promedio: {ranking_hdd['puntaje_final'].mean():.1f}"
+            delta=f"Puntaje promedio: {ranking_hdd['score_final'].mean():.1f}"
         )
     
     with col3:
-        mejor_cp = ranking_cp.loc[ranking_cp['puntaje_final'].idxmax()]
+        mejor_cp = ranking_cp.loc[ranking_cp['score_final'].idxmax()]
         st.metric(
             label="Mejor Equipo CP",
             value=mejor_cp['equipo'],
-            delta=f"Puntaje: {mejor_cp['puntaje_final']:.1f}"
+            delta=f"Puntaje: {mejor_cp['score_final']:.1f}"
         )
     
     with col4:
-        mejor_hdd = ranking_hdd.loc[ranking_hdd['puntaje_final'].idxmax()]
+        mejor_hdd = ranking_hdd.loc[ranking_hdd['score_final'].idxmax()]
         st.metric(
             label="Mejor Equipo HDD",
             value=mejor_hdd['equipo'],
-            delta=f"Puntaje: {mejor_hdd['puntaje_final']:.1f}"
+            delta=f"Puntaje: {mejor_hdd['score_final']:.1f}"
         )
     
     # Gráficos de distribución
@@ -86,10 +94,10 @@ if page == "📈 Vista Global":
         st.subheader("📊 Distribución de Puntajes CP")
         fig_cp = px.histogram(
             ranking_cp, 
-            x='puntaje_final',
+            x='score_final',
             nbins=20,
             title="Distribución de Puntajes CP",
-            labels={'puntaje_final': 'Puntaje Final', 'count': 'Cantidad de Equipos'}
+            labels={'score_final': 'Puntaje Final', 'count': 'Cantidad de Equipos'}
         )
         fig_cp.update_layout(showlegend=False)
         st.plotly_chart(fig_cp, use_container_width=True)
@@ -98,10 +106,10 @@ if page == "📈 Vista Global":
         st.subheader("📊 Distribución de Puntajes HDD")
         fig_hdd = px.histogram(
             ranking_hdd, 
-            x='puntaje_final',
+            x='score_final',
             nbins=20,
             title="Distribución de Puntajes HDD",
-            labels={'puntaje_final': 'Puntaje Final', 'count': 'Cantidad de Equipos'}
+            labels={'score_final': 'Puntaje Final', 'count': 'Cantidad de Equipos'}
         )
         fig_hdd.update_layout(showlegend=False)
         st.plotly_chart(fig_hdd, use_container_width=True)
@@ -111,27 +119,27 @@ if page == "📈 Vista Global":
     
     with col1:
         st.subheader("🏆 Top 10 Equipos CP")
-        top_cp = ranking_cp.nlargest(10, 'puntaje_final')[['equipo', 'puntaje_final']]
+        top_cp = ranking_cp.nlargest(10, 'score_final')[['equipo', 'score_final']]
         fig_top_cp = px.bar(
             top_cp,
-            x='puntaje_final',
+            x='score_final',
             y='equipo',
             orientation='h',
             title="Top 10 Equipos CP",
-            labels={'puntaje_final': 'Puntaje Final', 'equipo': 'Equipo'}
+            labels={'score_final': 'Puntaje Final', 'equipo': 'Equipo'}
         )
         st.plotly_chart(fig_top_cp, use_container_width=True)
     
     with col2:
         st.subheader("🏆 Top 10 Equipos HDD")
-        top_hdd = ranking_hdd.nlargest(10, 'puntaje_final')[['equipo', 'puntaje_final']]
+        top_hdd = ranking_hdd.nlargest(10, 'score_final')[['equipo', 'score_final']]
         fig_top_hdd = px.bar(
             top_hdd,
-            x='puntaje_final',
+            x='score_final',
             y='equipo',
             orientation='h',
             title="Top 10 Equipos HDD",
-            labels={'puntaje_final': 'Puntaje Final', 'equipo': 'Equipo'}
+            labels={'score_final': 'Puntaje Final', 'equipo': 'Equipo'}
         )
         st.plotly_chart(fig_top_hdd, use_container_width=True)
 
@@ -157,10 +165,24 @@ elif page == "🔍 Análisis por Equipo":
         if equipo_seleccionado in equipos_cp:
             datos_cp = ranking_cp[ranking_cp['equipo'] == equipo_seleccionado].iloc[0]
             st.info("📊 **Datos CP:**")
-            st.write(f"**Puntaje Final:** {datos_cp['puntaje_final']:.2f}")
+            st.write(f"**Puntaje Final:** {datos_cp['score_final']:.2f}")
             st.write(f"**Posición:** {datos_cp['posicion']}")
+            st.write(f"**Categoría:** {datos_cp['categoria']}")
+            
+            # Mostrar métricas individuales
+            st.write("**Métricas CP:**")
+            st.write(f"• Llenado: {datos_cp['cp_llenado_score']:.1f} pts")
+            st.write(f"• Estabilidad: {datos_cp['cp_inestabilidad_score']:.1f} pts")
+            st.write(f"• Tasa de Cambio: {datos_cp['cp_tasa_cambio_score']:.1f} pts")
+            
+            if 'areas_cp' in datos_cp and datos_cp['areas_cp']:
+                st.write(f"**Áreas CP:** {', '.join(datos_cp['areas_cp'])}")
+            
             if 'explicacion' in datos_cp:
                 st.write(f"**Explicación:** {datos_cp['explicacion']}")
+            
+            if 'recomendaciones' in datos_cp:
+                st.write(f"**Recomendaciones:** {datos_cp['recomendaciones']}")
         else:
             st.warning("❌ Este equipo no tiene datos CP")
     
@@ -168,10 +190,24 @@ elif page == "🔍 Análisis por Equipo":
         if equipo_seleccionado in equipos_hdd:
             datos_hdd = ranking_hdd[ranking_hdd['equipo'] == equipo_seleccionado].iloc[0]
             st.info("💾 **Datos HDD:**")
-            st.write(f"**Puntaje Final:** {datos_hdd['puntaje_final']:.2f}")
+            st.write(f"**Puntaje Final:** {datos_hdd['score_final']:.2f}")
             st.write(f"**Posición:** {datos_hdd['posicion']}")
+            st.write(f"**Categoría:** {datos_hdd['categoria']}")
+            
+            # Mostrar métricas individuales
+            st.write("**Métricas HDD:**")
+            st.write(f"• Uso: {datos_hdd['hdd_uso_score']:.1f} pts")
+            st.write(f"• Estabilidad: {datos_hdd['hdd_inestabilidad_score']:.1f} pts")
+            st.write(f"• Tasa de Cambio: {datos_hdd['hdd_tasa_cambio_score']:.1f} pts")
+            
+            if 'unidades_hdd' in datos_hdd and datos_hdd['unidades_hdd']:
+                st.write(f"**Unidades HDD:** {', '.join(datos_hdd['unidades_hdd'])}")
+            
             if 'explicacion' in datos_hdd:
                 st.write(f"**Explicación:** {datos_hdd['explicacion']}")
+            
+            if 'recomendaciones' in datos_hdd:
+                st.write(f"**Recomendaciones:** {datos_hdd['recomendaciones']}")
         else:
             st.warning("❌ Este equipo no tiene datos HDD")
     
@@ -184,7 +220,7 @@ elif page == "🔍 Análisis por Equipo":
         
         # Gráfico de radar
         categorias = ['Puntaje CP', 'Puntaje HDD']
-        valores = [datos_cp['puntaje_final'], datos_hdd['puntaje_final']]
+        valores = [datos_cp['score_final'], datos_hdd['score_final']]
         
         fig_radar = go.Figure()
         fig_radar.add_trace(go.Scatterpolar(
@@ -207,10 +243,10 @@ elif page == "🔍 Análisis por Equipo":
         st.plotly_chart(fig_radar, use_container_width=True)
         
         # Análisis comparativo
-        diferencia = abs(datos_cp['puntaje_final'] - datos_hdd['puntaje_final'])
+        diferencia = abs(datos_cp['score_final'] - datos_hdd['score_final'])
         if diferencia < 10:
             st.success("✅ **Equilibrio:** El equipo tiene un rendimiento equilibrado en CP y HDD")
-        elif datos_cp['puntaje_final'] > datos_hdd['puntaje_final']:
+        elif datos_cp['score_final'] > datos_hdd['score_final']:
             st.info("⚡ **Fuerte en CP:** El equipo destaca más en procesamiento")
         else:
             st.info("💾 **Fuerte en HDD:** El equipo destaca más en almacenamiento")
@@ -226,19 +262,19 @@ elif page == "📊 Comparativas":
     with col1:
         st.metric(
             label="Promedio CP",
-            value=f"{ranking_cp['puntaje_final'].mean():.1f}",
-            delta=f"Max: {ranking_cp['puntaje_final'].max():.1f}"
+            value=f"{ranking_cp['score_final'].mean():.1f}",
+            delta=f"Max: {ranking_cp['score_final'].max():.1f}"
         )
     
     with col2:
         st.metric(
             label="Promedio HDD",
-            value=f"{ranking_hdd['puntaje_final'].mean():.1f}",
-            delta=f"Max: {ranking_hdd['puntaje_final'].max():.1f}"
+            value=f"{ranking_hdd['score_final'].mean():.1f}",
+            delta=f"Max: {ranking_hdd['score_final'].max():.1f}"
         )
     
     with col3:
-        diff_avg = ranking_cp['puntaje_final'].mean() - ranking_hdd['puntaje_final'].mean()
+        diff_avg = ranking_cp['score_final'].mean() - ranking_hdd['score_final'].mean()
         st.metric(
             label="Diferencia Promedio",
             value=f"{abs(diff_avg):.1f}",
@@ -249,8 +285,8 @@ elif page == "📊 Comparativas":
     st.subheader("📊 Comparación de Distribuciones")
     
     # Preparar datos para box plot
-    cp_data = ranking_cp['puntaje_final'].rename('CP')
-    hdd_data = ranking_hdd['puntaje_final'].rename('HDD')
+    cp_data = ranking_cp['score_final'].rename('CP')
+    hdd_data = ranking_hdd['score_final'].rename('HDD')
     
     fig_box = go.Figure()
     fig_box.add_trace(go.Box(y=cp_data, name='CP', boxpoints='outliers'))
@@ -273,8 +309,8 @@ elif page == "📊 Comparativas":
         # Crear DataFrame con equipos comunes
         datos_comunes = []
         for equipo in equipos_comunes:
-            puntaje_cp = ranking_cp[ranking_cp['equipo'] == equipo]['puntaje_final'].iloc[0]
-            puntaje_hdd = ranking_hdd[ranking_hdd['equipo'] == equipo]['puntaje_final'].iloc[0]
+            puntaje_cp = ranking_cp[ranking_cp['equipo'] == equipo]['score_final'].iloc[0]
+            puntaje_hdd = ranking_hdd[ranking_hdd['equipo'] == equipo]['score_final'].iloc[0]
             datos_comunes.append({
                 'equipo': equipo,
                 'puntaje_cp': puntaje_cp,
@@ -307,12 +343,128 @@ elif page == "📊 Comparativas":
         else:
             st.warning("⚠️ **Baja correlación:** El rendimiento en CP y HDD son independientes")
 
+elif page == "📋 Explicaciones Detalladas":
+    st.header("📋 Explicaciones Detalladas del Sistema de Puntuación")
+    
+    # Explicación del sistema CP
+    st.subheader("⚡ Sistema de Puntuación CP (Procesamiento)")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.info("**Métricas CP:**")
+        st.write("""
+        **1. CP_LLENADO (Ocupación del CPU)**
+        - **Objetivo:** Menor ocupación = Mejor rendimiento
+        - **Rango típico:** 0-100%
+        - **Evaluación:** Menor valor = Mayor puntaje
+        
+        **2. CP_INESTABILIDAD (Variabilidad del CPU)**
+        - **Objetivo:** Menor variabilidad = Mayor estabilidad
+        - **Rango típico:** 0-1000+
+        - **Evaluación:** Menor valor = Mayor puntaje
+        
+        **3. CP_TASA_CAMBIO (Cambios en el CPU)**
+        - **Objetivo:** Menor tasa de cambio = Mayor estabilidad
+        - **Rango típico:** 0-10000+
+        - **Evaluación:** Menor valor = Mayor puntaje
+        """)
+    
+    with col2:
+        st.info("**Áreas CP Monitoreadas:**")
+        st.write("""
+        • **PP_NFD:** Procesos por nodo
+        • **IOLOAD:** Carga de entrada/salida
+        • **totmem:** Memoria total utilizada
+        • **CUMOVR:** Cobertura de memoria
+        • **OMOVRN:** Overlap de memoria
+        • **TLCONS:** Consumo de tiempo
+        • **OMLDAV:** Carga promedio
+        • **CPLOAD:** Carga del CPU
+        • **MAXMEM:** Memoria máxima
+        """)
+    
+    # Explicación del sistema HDD
+    st.subheader("💾 Sistema de Puntuación HDD (Almacenamiento)")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.info("**Métricas HDD:**")
+        st.write("""
+        **1. HDD_USO (Uso del disco)**
+        - **Objetivo:** Menor uso = Mejor rendimiento
+        - **Rango típico:** 0-100%
+        - **Evaluación:** Menor valor = Mayor puntaje
+        
+        **2. HDD_INESTABILIDAD (Variabilidad del disco)**
+        - **Objetivo:** Menor variabilidad = Mayor estabilidad
+        - **Rango típico:** 0-10+
+        - **Evaluación:** Menor valor = Mayor puntaje
+        
+        **3. HDD_TASA_CAMBIO (Cambios en el disco)**
+        - **Objetivo:** Menor tasa de cambio = Mayor estabilidad
+        - **Rango típico:** 0-1000+
+        - **Evaluación:** Menor valor = Mayor puntaje
+        """)
+    
+    with col2:
+        st.info("**Unidades HDD Monitoreadas:**")
+        st.write("""
+        • **C:, D:, E:, F:, G:, H:, I:, J:, K:, L:, Z:**
+        • **avg:** Promedio de todas las unidades
+        • **Sistema:** Monitorea múltiples unidades por equipo
+        """)
+    
+    # Categorías de rendimiento
+    st.subheader("🏆 Categorías de Rendimiento")
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.success("**Excelente (90-100 pts)**")
+        st.write("Rendimiento óptimo en todas las métricas")
+    
+    with col2:
+        st.info("**Muy Bueno (75-89 pts)**")
+        st.write("Rendimiento muy bueno con mínimas mejoras")
+    
+    with col3:
+        st.warning("**Bueno (50-74 pts)**")
+        st.write("Rendimiento aceptable con oportunidades de mejora")
+    
+    with col4:
+        st.error("**Regular/Necesita Mejora (<50 pts)**")
+        st.write("Requiere atención inmediata y mejoras significativas")
+    
+    # Ejemplos de explicaciones
+    st.subheader("📝 Ejemplos de Explicaciones")
+    
+    # Mostrar algunos ejemplos del ranking CP
+    st.write("**Ejemplos CP:**")
+    ejemplos_cp = ranking_cp.head(3)
+    for _, ejemplo in ejemplos_cp.iterrows():
+        with st.expander(f"Equipo {ejemplo['equipo']} - Puntaje: {ejemplo['score_final']:.1f}"):
+            st.write(f"**Explicación:** {ejemplo['explicacion']}")
+            st.write(f"**Recomendaciones:** {ejemplo['recomendaciones']}")
+            st.write(f"**Categoría:** {ejemplo['categoria']}")
+    
+    # Mostrar algunos ejemplos del ranking HDD
+    st.write("**Ejemplos HDD:**")
+    ejemplos_hdd = ranking_hdd.head(3)
+    for _, ejemplo in ejemplos_hdd.iterrows():
+        with st.expander(f"Equipo {ejemplo['equipo']} - Puntaje: {ejemplo['score_final']:.1f}"):
+            st.write(f"**Explicación:** {ejemplo['explicacion']}")
+            st.write(f"**Recomendaciones:** {ejemplo['recomendaciones']}")
+            st.write(f"**Categoría:** {ejemplo['categoria']}")
+
 # Footer
 st.markdown("---")
 st.markdown(
     """
     <div style='text-align: center; color: #666;'>
         <p>📊 Dashboard de Análisis de Equipos CP-HDD | Desarrollado con Streamlit</p>
+        <p>🔄 Sistema de Puntuación Actualizado v2.0</p>
     </div>
     """,
     unsafe_allow_html=True
